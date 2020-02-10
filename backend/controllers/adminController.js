@@ -1,4 +1,5 @@
 const {Quiz, QuizQuestions, QuizAnswers} = require('../models');
+const {validationResult} = require('express-validator');
 
 exports.getQuizzes = async (req,res) => {
 
@@ -56,26 +57,16 @@ exports.getQuestions = async (req,res) => {
 
 exports.addQuizItem = async (req,res) => {
 
-    const {quizId, question, answers, correctAnswer} = req.body;
+    const errors = validationResult(req);
 
+    if(!errors.isEmpty()){
 
-    const answerNums = answers.map(item => {
-        return +(item.answerNo);
-    });
+        return res.status(422).json({errors : errors.array()});
 
-    console.log(answerNums);
-
-    if(!answerNums.includes(+correctAnswer)){
-        return res.status(422).json({error : 'The "correct answer" you provided does not exist.'});
     }
 
+    const {quizId, question, answers, correctAnswer} = req.body;
 
-
-    const dbAnswers = answers.map(item => {
-        return {
-
-        }
-    });
 
     // try {
 
