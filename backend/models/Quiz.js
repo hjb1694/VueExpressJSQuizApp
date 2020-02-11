@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
         quizDescription : {
             type : DataTypes.STRING
         }, 
+        image : {
+            type : DataTypes.TEXT
+        },
         timestamps : false
     });
 

@@ -9,4 +9,5 @@ router.post('/addQuizItem', newQuizItemValidation, adminController.addQuizItem);
 router.get('/question/:questionId', adminController.getQuestionDetails);
 
 
+
 module.exports = router;

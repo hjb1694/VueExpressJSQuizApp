@@ -4,9 +4,10 @@ export default {
     fetchQuizzes(){
         return axios.get('/admin/quiz');
     }, 
-    addNewQuiz(quizTitle){
+    addNewQuiz(quizTitle, imageURL){
         return axios.post('/admin/quiz', {
-            quizTitle
+            quizTitle, 
+            imageURL
         });
     }, 
     fetchQuestions(quizId){

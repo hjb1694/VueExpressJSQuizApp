@@ -15,7 +15,8 @@ exports.addNewQuiz = async (req,res) => {
     try{
 
         const result = await Quiz.create({
-            quizDescription : req.body.quizTitle
+            quizDescription : req.body.quizTitle, 
+            image : req.body.imageURL
         });
 
         console.log(result);
@@ -95,7 +96,7 @@ exports.addQuizItem = async (req,res) => {
 
         console.log(e);
         res.status(500).json({error : e});
-        
+
 
     }
 
