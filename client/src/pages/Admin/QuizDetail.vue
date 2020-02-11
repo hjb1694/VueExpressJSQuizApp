@@ -100,12 +100,24 @@ export default {
       }
 
       try {
-        await adminService.addNewQuestion(
+        await adminService.addNewQuizItem(
           this.$route.params.quizId,
           this.newQuestion,
           answers,
           this.correctAnswer
         );
+        this.newQuestion = null;
+        this.answer1 = null;
+        this.answer2 = null;
+        this.answer3 = null;
+        this.answer4 = null;
+        this.answer5 = null;
+        this.answer3Hidden = true;
+        this.answer4Hidden = true;
+        this.answer5Hidden = true;
+        this.correctAnswer = null;
+        this.answerBoxToReveal = 3;
+
         this.fetchQuestions();
       } catch (e) {
         this.error = e;

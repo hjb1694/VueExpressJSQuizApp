@@ -68,22 +68,36 @@ exports.addQuizItem = async (req,res) => {
     const {quizId, question, answers, correctAnswer} = req.body;
 
 
-    // try {
 
-    // const response = await QuizQuestions.create({
-    //     quiz_id : quizId, 
-    //     question
-    // });
+    try {
 
-    // console.log(response);
-    // res.json({ok : 'added'});
+    let response = await QuizQuestions.create({
+        quiz_id : quizId, 
+        question, 
+        correctAnswer
+    });
 
-    // }catch(e){
+    const questionId = response.dataValues.id;
 
-    //     console.log(e);
-    //     res.status(500).json({error : e});
+    const dbAnswers = answers.map(answer => {
+        return {
+            quiz_question_id : questionId, 
+            answerNumber : answer.answerNo, 
+            answer : answer.answer
+        }
+    });
 
-    // }
+    await QuizAnswers.bulkCreate(dbAnswers);
+
+    res.json({ok : 'added'});
+
+    }catch(e){
+
+        console.log(e);
+        res.status(500).json({error : e});
+        
+
+    }
 
 }
 

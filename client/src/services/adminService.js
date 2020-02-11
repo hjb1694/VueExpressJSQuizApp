@@ -12,8 +12,8 @@ export default {
     fetchQuestions(quizId){
         return axios.get(`/admin/getQuestions?quizId=${quizId}`);
     }, 
-    addNewQuestion(quizId, question, answers, correctAnswer){
-        return axios.post('/admin/addQuestion',{
+    addNewQuizItem(quizId, question, answers, correctAnswer){
+        return axios.post('/admin/addQuizItem',{
             quizId, 
             question, 
             answers, 
