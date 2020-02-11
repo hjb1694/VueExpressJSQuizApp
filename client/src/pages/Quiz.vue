@@ -9,8 +9,26 @@
           :key="result.questionContent"
         >
           <h3>{{result.questionContent}}</h3>
+          <p class="mt-4">
+            <strong>Result:</strong>
+            {{result.correctIncorrect}}
+          </p>
+          <p>
+            <strong>Correct Answer:</strong>
+            {{result.correctAnswerContent}}
+          </p>
+          <p>
+            <strong>Your Answer:</strong>
+            {{result.userAnswerContent}}
+          </p>
         </div>
       </div>
+      <v-btn
+        class="mt-4"
+        @click="$router.push({name : 'quizList'})"
+        text
+        color="indigo"
+      >Back to Quizzes</v-btn>
     </div>
     <div v-else>
       <template v-if="quizItems">
