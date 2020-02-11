@@ -24,7 +24,7 @@
     </div>
     <div class="mt-4">
       <v-text-field v-model="newQuizTitle" label="Add New Quiz Title"></v-text-field>
-      <v-text-field v-model="imageURL" label="Add Image URL"></v-text-field>
+      <v-text-field v-model="newImageURL" label="Add Image URL"></v-text-field>
       <v-btn @click="submit" color="indigo" dark>Add Quiz</v-btn>
       <div v-if="error">{{error}}</div>
     </div>

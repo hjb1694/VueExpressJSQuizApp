@@ -9,6 +9,7 @@ app.use(cors());
 
 
 app.use(require('./routes/auth'));
+app.use(require('./routes/quiz'));
 app.use('/admin', require('./routes/admin'));
 
 

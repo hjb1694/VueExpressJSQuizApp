@@ -11,6 +11,7 @@ import AdminQuizzes from '@/pages/Admin/AdminQuizzes.vue';
 import QuizDetail from '@/pages/Admin/QuizDetail.vue';
 import QuestionDetail from '@/pages/Admin/QuestionDetail';
 import QuizList from '@/pages/QuizList.vue';
+import Quiz from '@/pages/Quiz.vue';
 
 import store from './store/store';
 
@@ -57,7 +58,8 @@ const routes = [
         {path : 'questionDetail/:questionId', name : 'questionDetail', 
         component : QuestionDetail}
     ]}, 
-    {path : '/quiz', name : 'quizList', component : QuizList}
+    {path : '/quiz', name : 'quizList', component : QuizList},
+    {path : '/quiz/:quizId', name : 'quiz', component : Quiz}
 ];
 
 
