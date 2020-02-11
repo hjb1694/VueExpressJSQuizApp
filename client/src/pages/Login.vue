@@ -16,14 +16,14 @@
   </div>
 </template>
 <script>
-import authService from '../services/authService';
+import authService from "../services/authService";
 
 export default {
   data: () => ({
     email: null,
     password: null,
     formHasErrors: false,
-    errors : null,
+    errors: null,
     rules: {
       email: value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -32,31 +32,26 @@ export default {
     }
   }),
   methods: {
-    async submit(){
+    async submit() {
       this.error = null;
       try {
         const response = await authService.login(this.email, this.password);
 
-        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch("setToken", response.data.token);
 
-        this.$router.replace({name : 'root'});
-
-      }catch(e){
+        this.$router.replace({ name: "quizList" });
+      } catch (e) {
         const errorsArray = [];
 
-        if(e.response && e.response.data.errors){
-
-          for(let error of e.response.data.errors){
-
+        if (e.response && e.response.data.errors) {
+          for (let error of e.response.data.errors) {
             errorsArray.push(error.msg);
-
           }
 
-          this.errors = errorsArray
-
-        }else {
-            errorsArray.push(e.message);
-            this.errors = errorsArray;
+          this.errors = errorsArray;
+        } else {
+          errorsArray.push(e.message);
+          this.errors = errorsArray;
         }
       }
     }

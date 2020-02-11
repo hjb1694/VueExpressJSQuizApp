@@ -58,8 +58,36 @@ const routes = [
         {path : 'questionDetail/:questionId', name : 'questionDetail', 
         component : QuestionDetail}
     ]}, 
-    {path : '/quiz', name : 'quizList', component : QuizList},
-    {path : '/quiz/:quizId', name : 'quiz', component : Quiz}
+    {path : '/quiz', name : 'quizList', component : QuizList, 
+    beforeEnter(to, from, next){
+
+        if(!store.state.token){
+
+            next({name : 'register'});
+
+        } else {
+
+            next();
+
+        }
+
+
+    }},
+    {path : '/quiz/:quizId', name : 'quiz', component : Quiz, 
+    beforeEnter(to, from, next){
+
+        if(!store.state.token){
+
+            next({name : 'register'});
+
+        } else {
+
+            next();
+
+        }
+
+
+    }}
 ];
 
 

@@ -9,6 +9,7 @@
         <v-list-item-content>
           <router-link v-if="!isLoggedIn" :to="{name : 'register'}">Register</router-link>
           <router-link v-if="!isLoggedIn" :to="{name : 'login'}">Login</router-link>
+          <router-link v-if="isLoggedIn" :to="{name : 'quizList'}">Quizzes</router-link>
           <a v-if="isLoggedIn" @click="logout">Logout</a>
         </v-list-item-content>
       </v-list-item>
@@ -19,18 +20,18 @@
 export default {
   data: function() {
     return {
-      drawer: false, 
+      drawer: false
     };
-  }, 
-  computed : {
-    isLoggedIn(){
+  },
+  computed: {
+    isLoggedIn() {
       return this.$store.getters.isLoggedIn;
     }
   },
-  methods : {
-    logout(){
-        this.$store.dispatch('logout');
-        this.$router.replace({name : 'root'});
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.replace({ name: "root" });
     }
   }
 };

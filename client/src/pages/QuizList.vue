@@ -20,6 +20,7 @@
         </v-card>
       </div>
     </template>
+    <p>{{error}}</p>
   </div>
 </template>
 <script>
@@ -28,13 +29,22 @@ import quizService from "../services/quizService";
 export default {
   data() {
     return {
-      quizzes: null
+      quizzes: null,
+      error: null
     };
   },
   methods: {
     async fetchQuizzes() {
-      const response = await quizService.fetchQuizzes();
-      this.quizzes = response.data.quizzes;
+      try {
+        const response = await quizService.fetchQuizzes();
+        this.quizzes = response.data.quizzes;
+      } catch (e) {
+        if (e.response && e.response.data.error) {
+          this.error = e.response.data.error;
+        } else {
+          this.error = e;
+        }
+      }
     }
   },
   created() {

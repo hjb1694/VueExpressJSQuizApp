@@ -6,6 +6,12 @@ exports.getQuizList = async (req,res) => {
 
         const quizzes = await Quiz.findAll();
 
+        if(!quizzes.length){
+
+            return res.status(404).json({error : 'No quizzes found!'});
+
+        }
+
         res.json({quizzes});
 
     }catch(e){
@@ -30,6 +36,10 @@ exports.getQuiz = async (req,res) => {
                 {model : QuizAnswers}
             ]
         });
+
+        if(!quiz){
+            res.status(404).json({error : 'Not Found!'});
+        }
 
         res.json({quiz});
 
