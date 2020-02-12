@@ -10,13 +10,15 @@
           <v-text-field label="Email" v-model="email" :rules="[rules.email]"></v-text-field>
           <v-text-field label="Password" type="password" v-model="password"></v-text-field>
           <v-text-field label="Confirm Password" type="password" v-model="confirmPassword"></v-text-field>
-          <v-btn color="indigo accent-4" @click="submit" dark>Create Account</v-btn>
+          <v-btn color="indigo darken-2" @click="submit" dark>Create Account</v-btn>
           <p class="mt-3">
             Already have an account?
             <router-link :to="{name : 'login'}">Sign in here!</router-link>
           </p>
           <div v-if="errors">
-            <p v-for="error of errors" :key="error">{{error}}</p>
+            <v-alert color="red" dark>
+              <p v-for="error of errors" :key="error">{{error}}</p>
+            </v-alert>
           </div>
         </form>
       </div>

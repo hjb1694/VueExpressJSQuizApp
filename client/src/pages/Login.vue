@@ -8,9 +8,17 @@
         <form class="px-3 py-3">
           <v-text-field label="Email" v-model="email" :rules="[rules.email]"></v-text-field>
           <v-text-field label="Password" type="password" v-model="password"></v-text-field>
-          <v-btn color="indigo accent-4" @click="submit" dark>Login</v-btn>
+          <v-btn color="indigo darken-2" @click="submit" dark>Login</v-btn>
+          <p class="mt-3">
+            Don't have an account?
+            <router-link :to="{name : 'register'}">Register Here!</router-link>
+          </p>
           <div v-if="errors">
-            <p v-for="error of errors" :key="error">{{error}}</p>
+            <v-alert color="red" dark class="elevation-2">
+              <p v-for="error of errors" :key="error">
+                <strong>{{error}}</strong>
+              </p>
+            </v-alert>
           </div>
         </form>
       </div>

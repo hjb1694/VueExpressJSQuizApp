@@ -5,12 +5,24 @@
       <v-toolbar-title color="white">JavaScript Quizzes</v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer fixed temporary v-model="drawer">
-      <v-list-item>
+      <v-list-item v-if="!isLoggedIn" link>
         <v-list-item-content>
-          <router-link v-if="!isLoggedIn" :to="{name : 'register'}">Register</router-link>
-          <router-link v-if="!isLoggedIn" :to="{name : 'login'}">Login</router-link>
-          <router-link v-if="isLoggedIn" :to="{name : 'quizList'}">Quizzes</router-link>
-          <a v-if="isLoggedIn" @click="logout">Logout</a>
+          <router-link class="navlink" :to="{name : 'register'}">Register</router-link>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item v-if="!isLoggedIn" link>
+        <v-list-item-content>
+          <router-link class="navlink" :to="{name : 'login'}">Login</router-link>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item v-if="isLoggedIn" link>
+        <v-list-item-content>
+          <router-link class="navlink" :to="{name : 'quizList'}">Quizzes</router-link>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item v-if="isLoggedIn" link>
+        <v-list-item-content>
+          <a class="navlink" @click="logout">Logout</a>
         </v-list-item-content>
       </v-list-item>
     </v-navigation-drawer>
@@ -36,3 +48,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+.navlink {
+  text-decoration: none;
+  font-weight: bold;
+  color: #777;
+}
+</style>

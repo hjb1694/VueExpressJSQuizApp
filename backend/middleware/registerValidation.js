@@ -11,7 +11,7 @@ module.exports = [
         return true;
 
     }), 
-    check('email').isEmail(), 
+    check('email', 'Please enter a valid email address.').isEmail(), 
     check('email').custom(async value => {
 
         const user = await User.findOne({
@@ -30,5 +30,5 @@ module.exports = [
 
 
     }),
-    check('password').trim().isLength({min : 8})
+    check('password', 'Please enter a password of at least 8 characters').trim().isLength({min : 8})
 ];
