@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-app-bar dense dark color="indigo darken-2" collapse-on-scroll>
+    <v-app-bar dense dark fixed color="indigo darken-2" collapse-on-scroll>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title color="white">JavaScript Quizzes</v-toolbar-title>
     </v-app-bar>
-    <v-navigation-drawer absolute temporary v-model="drawer">
+    <v-navigation-drawer fixed temporary v-model="drawer">
       <v-list-item>
         <v-list-item-content>
           <router-link v-if="!isLoggedIn" :to="{name : 'register'}">Register</router-link>

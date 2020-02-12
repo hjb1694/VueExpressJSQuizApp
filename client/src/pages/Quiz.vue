@@ -1,59 +1,63 @@
 <template>
   <div>
-    <div v-if="showResults">
-      <h1>Your Results</h1>
-      <div class="mt-4">
-        <div
-          class="px-4 py-4 mt-4 elevation-6"
-          v-for="result of results"
-          :key="result.questionContent"
-        >
-          <h3>{{result.questionContent}}</h3>
-          <p class="mt-4">
-            <strong>Result:</strong>
-            {{result.correctIncorrect}}
-          </p>
-          <p>
-            <strong>Correct Answer:</strong>
-            {{result.correctAnswerContent}}
-          </p>
-          <p>
-            <strong>Your Answer:</strong>
-            {{result.userAnswerContent}}
-          </p>
-        </div>
-      </div>
-      <v-btn
-        class="mt-4"
-        @click="$router.push({name : 'quizList'})"
-        text
-        color="indigo"
-      >Back to Quizzes</v-btn>
-    </div>
-    <div v-else>
-      <template v-if="quizItems">
-        <div v-if="quizItems.length">
-          <div class="elevation-4 px-4 py-4 mt-4" v-for="item of quizItems" :key="item.id">
-            <h3>{{item.question}}</h3>
-            <div class="mt-4">
-              <v-radio-group v-model="userAnswers[findQ(item.id)].userAnswer">
-                <v-radio
-                  v-for="answer of item.QuizAnswers"
-                  :key="answer.id"
-                  :label="answer.answer"
-                  :value="answer.answerNumber"
-                ></v-radio>
-              </v-radio-group>
+    <v-container>
+      <div style="margin-top:3.5rem;">
+        <div v-if="showResults">
+          <h1>Your Results</h1>
+          <div class="mt-4">
+            <div
+              class="px-4 py-4 mt-4 elevation-6"
+              v-for="result of results"
+              :key="result.questionContent"
+            >
+              <h3>{{result.questionContent}}</h3>
+              <p class="mt-4">
+                <strong>Result:</strong>
+                {{result.correctIncorrect}}
+              </p>
+              <p>
+                <strong>Correct Answer:</strong>
+                {{result.correctAnswerContent}}
+              </p>
+              <p>
+                <strong>Your Answer:</strong>
+                {{result.userAnswerContent}}
+              </p>
             </div>
           </div>
-          <v-btn color="indigo" class="mt-4" dark @click="submit">Score Quiz</v-btn>
-          <p class="mt-4">{{submissionError}}</p>
+          <v-btn
+            class="mt-4"
+            @click="$router.push({name : 'quizList'})"
+            text
+            color="indigo"
+          >Back to Quizzes</v-btn>
         </div>
         <div v-else>
-          <p>Hmmm...Doesn't appear to be any quiz items.</p>
+          <template v-if="quizItems">
+            <div v-if="quizItems.length">
+              <div class="elevation-4 px-4 py-4 mt-4" v-for="item of quizItems" :key="item.id">
+                <h3>{{item.question}}</h3>
+                <div class="mt-4">
+                  <v-radio-group v-model="userAnswers[findQ(item.id)].userAnswer">
+                    <v-radio
+                      v-for="answer of item.QuizAnswers"
+                      :key="answer.id"
+                      :label="answer.answer"
+                      :value="answer.answerNumber"
+                    ></v-radio>
+                  </v-radio-group>
+                </div>
+              </div>
+              <v-btn color="indigo" class="mt-4" dark @click="submit">Score Quiz</v-btn>
+              <p class="mt-4">{{submissionError}}</p>
+            </div>
+            <div v-else>
+              <p>Hmmm...Doesn't appear to be any quiz items.</p>
+            </div>
+          </template>
         </div>
-      </template>
-    </div>
+      </div>
+    </v-container>
   </div>
 </template>
 <script>

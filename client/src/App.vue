@@ -3,9 +3,7 @@
     <div>
       <header-nav></header-nav>
       <transition name="fade" mode="out-in">
-        <v-container>
-          <router-view></router-view>
-        </v-container>
+        <router-view></router-view>
       </transition>
     </div>
   </v-app>
@@ -25,14 +23,14 @@ export default {
 }
 
 .fade-enter-active {
-  transition: opacity 2s;
+  transition: opacity 0.8s;
 }
 
 .fade-leave-active {
 }
 
 .fade-leave {
-  transition: opacity 2s;
+  transition: opacity 0.8s;
   opacity: 0;
 }
 </style>

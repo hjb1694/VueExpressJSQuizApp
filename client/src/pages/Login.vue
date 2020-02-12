@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div class="elevation-6">
-      <v-toolbar color="indigo" dense dark>
-        <v-toolbar-title>Login</v-toolbar-title>
-      </v-toolbar>
-      <form class="px-3 py-3">
-        <v-text-field label="Email" v-model="email" :rules="[rules.email]"></v-text-field>
-        <v-text-field label="Password" type="password" v-model="password"></v-text-field>
-        <v-btn color="indigo accent-4" @click="submit" dark>Login</v-btn>
-        <div v-if="errors">
-          <p v-for="error of errors" :key="error">{{error}}</p>
-        </div>
-      </form>
-    </div>
+    <v-container>
+      <div class="elevation-6" style="margin-top:6rem;">
+        <v-toolbar color="indigo" dense dark>
+          <v-toolbar-title>Login</v-toolbar-title>
+        </v-toolbar>
+        <form class="px-3 py-3">
+          <v-text-field label="Email" v-model="email" :rules="[rules.email]"></v-text-field>
+          <v-text-field label="Password" type="password" v-model="password"></v-text-field>
+          <v-btn color="indigo accent-4" @click="submit" dark>Login</v-btn>
+          <div v-if="errors">
+            <p v-for="error of errors" :key="error">{{error}}</p>
+          </div>
+        </form>
+      </div>
+    </v-container>
   </div>
 </template>
 <script>

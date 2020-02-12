@@ -55,6 +55,8 @@ export default {
       try {
         await adminService.addNewQuiz(this.newQuizTitle, this.newImageURL);
         this.fetchQuizzes();
+        this.newQuizTitle = null;
+        this.newImageURL = null;
       } catch (e) {
         this.error = e;
       }

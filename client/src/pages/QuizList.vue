@@ -1,26 +1,28 @@
 <template>
   <div>
-    <h1>Quizzes</h1>
-    <template v-if="quizzes">
-      <div class="mt-4" v-if="quizzes.length">
-        <v-card v-for="quiz of quizzes" :key="quiz.id" max-width="300">
-          <v-img class="white--text align-end" height="200px" :src="quiz.image">
-            <v-card-title>{{quiz.quizDescription}}</v-card-title>
-          </v-img>
-
-          <v-card-subtitle class="pb-0">Quiz {{quiz.id}}</v-card-subtitle>
-
-          <v-card-actions>
-            <v-btn
-              @click="$router.push({name : 'quiz', params : {quizId : quiz.id}})"
-              color="indigo"
-              text
-            >Take Quiz</v-btn>
-          </v-card-actions>
-        </v-card>
+    <v-container>
+      <div style="margin-top:4rem;">
+        <h1>Quizzes</h1>
+        <template v-if="quizzes">
+          <div class="mt-4 d-flex" v-if="quizzes.length">
+            <v-card v-for="quiz of quizzes" :key="quiz.id" max-width="275" class="mr-3 mb-3">
+              <v-img class="white--text align-end" height="200px" :src="quiz.image">
+                <v-card-title>{{quiz.quizDescription}}</v-card-title>
+              </v-img>
+              <v-card-subtitle class="pb-0">Quiz {{quiz.id}}</v-card-subtitle>
+              <v-card-actions>
+                <v-btn
+                  @click="$router.push({name : 'quiz', params : {quizId : quiz.id}})"
+                  color="indigo"
+                  text
+                >Take Quiz</v-btn>
+              </v-card-actions>
+            </v-card>
+          </div>
+        </template>
+        <p>{{error}}</p>
       </div>
-    </template>
-    <p>{{error}}</p>
+    </v-container>
   </div>
 </template>
 <script>
@@ -47,7 +49,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     this.fetchQuizzes();
   }
 };
