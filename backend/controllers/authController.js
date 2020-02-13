@@ -7,7 +7,8 @@ const bcrypt = require('bcryptjs');
 
 const signToken = user => {
     return jwt.sign({
-        userId : user.id
+        userId : user.id, 
+        isAdmin : user.isAdmin
     }, config.auth.jwtSecret, {
         expiresIn : '1hr'
     });
@@ -32,7 +33,8 @@ exports.register =  async (req,res) => {
     const user = await User.create({
         name, 
         email, 
-        password
+        password, 
+        isAdmin : 0
     })
 
     res.json({
@@ -98,7 +100,8 @@ exports.login = async (req,res) => {
         res.json({
             userId : user.id, 
             userName : user.name,
-            token : signToken(user)
+            token : signToken(user), 
+            isAdmin : user.isAdmin
         });
 
         

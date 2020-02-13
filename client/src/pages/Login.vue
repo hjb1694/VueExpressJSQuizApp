@@ -48,6 +48,7 @@ export default {
         const response = await authService.login(this.email, this.password);
 
         this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setIsAdmin", response.data.isAdmin);
 
         this.$router.replace({ name: "quizList" });
       } catch (e) {

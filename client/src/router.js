@@ -57,7 +57,16 @@ const routes = [
         {path : 'quizDetail/:quizId', name : 'quizDetail', component : QuizDetail}, 
         {path : 'questionDetail/:questionId', name : 'questionDetail', 
         component : QuestionDetail}
-    ]}, 
+    ], 
+    beforeEnter(to,from,next){
+
+        if(!store.state.token || !store.state.isAdmin){
+            next({name : 'root'});
+        }else{
+            next();
+        }
+
+    }}, 
     {path : '/quiz', name : 'quizList', component : QuizList, 
     beforeEnter(to, from, next){
 

@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         }, 
         password : {
             type : DataTypes.TEXT
+        }, 
+        isAdmin : {
+            type : DataTypes.BOOLEAN, 
+            default : 0
         }
     });
 

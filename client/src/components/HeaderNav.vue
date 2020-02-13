@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title color="white">JavaScript Quizzes</v-toolbar-title>
     </v-app-bar>
-    <v-navigation-drawer fixed temporary v-model="drawer">
+    <v-navigation-drawer fixed temporary color="indigo darken-2" v-model="drawer">
       <v-list-item v-if="!isLoggedIn" link>
         <v-list-item-content>
           <router-link class="navlink" :to="{name : 'register'}">Register</router-link>
@@ -52,6 +52,6 @@ export default {
 .navlink {
   text-decoration: none;
   font-weight: bold;
-  color: #777;
+  color: #fff;
 }
 </style>
