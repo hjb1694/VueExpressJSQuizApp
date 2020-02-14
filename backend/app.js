@@ -14,7 +14,7 @@ app.use('/admin', require('./routes/admin'));
 
 
 sequelize
-.sync({force : true})
+.sync()
 .then(() => {
     app.listen(config.port, () => console.log(`Listening on port ${config.port}`));
 })
